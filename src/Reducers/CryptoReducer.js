@@ -21,6 +21,24 @@ export default function(state = initialState, action) {
         errorMessage: null
       });
 
+    case FETCHING_COIN_DATA_SUCCESS:
+      return Object.assign({}, state, {
+        isFetching: false,
+        data: action.payload,
+        hasError: false,
+        errorMessage: null
+      });
+
+    case FETCHING_COIN_DATA_FAIL:
+      return Object.assign({}, state, {
+        isFetching: false,
+        data: action.payload,
+        hasError: true,
+        errorMessage: action.err
+      });
+
+
+
       default:
         return state;
   }
